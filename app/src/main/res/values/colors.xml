@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="grid_element_light">#D3D3D3</color>
+    <color name="grid_element_dark">#A9A9A9</color>
+    <color name="grid_element_accent">#003b6f</color>
+    <color name="board_color">#654321</color>
+    <color name="header_text_color">#add8e6</color>
+    <color name="winning_positions_color">#FFF000</color>
 </resources>

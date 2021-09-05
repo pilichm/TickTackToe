@@ -1,8 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/board_color"
     android:gravity="center"
     android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvWhichPlayer"
+        android:gravity="top|center"
+        android:textSize="@dimen/default_text_size"
+        android:textColor="@color/header_text_color"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -12,7 +23,6 @@
 
         <ImageView
             android:tag="0"
-            android:src="@mipmap/ic_launcher"
             android:layout_margin="@dimen/grid_element_margin"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
@@ -21,7 +31,6 @@
 
         <ImageView
             android:tag="1"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -30,7 +39,6 @@
 
         <ImageView
             android:tag="2"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -39,7 +47,6 @@
 
         <ImageView
             android:tag="3"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -48,7 +55,6 @@
 
         <ImageView
             android:tag="4"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -57,7 +63,6 @@
 
         <ImageView
             android:tag="5"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -66,7 +71,6 @@
 
         <ImageView
             android:tag="6"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -75,7 +79,6 @@
 
         <ImageView
             android:tag="7"
-            android:src="@drawable/shape_circle"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
@@ -84,7 +87,6 @@
 
         <ImageView
             android:tag="8"
-            android:src="@mipmap/ic_launcher"
             android:padding="@dimen/grid_element_padding"
             android:contentDescription="@string/grid_element_content_desc"
             android:layout_margin="@dimen/grid_element_margin"
