@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grid_element_size">120dp</dimen>
+    <dimen name="grid_element_margin">5dp</dimen>
+    <dimen name="grid_element_padding">15dp</dimen>
+</resources>

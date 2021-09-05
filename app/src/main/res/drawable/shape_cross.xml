@@ -1,0 +1,26 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+            android:fromDegrees="45"
+            android:toDegrees="90">
+            <shape
+                android:shape="line">
+                <stroke
+                    android:width="10dp"
+                    android:color="@color/black" />
+            </shape>
+        </rotate>
+    </item>
+    <item>
+        <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+            android:fromDegrees="-45"
+            android:toDegrees="90">
+            <shape
+                android:shape="line">
+                <stroke
+                    android:width="10dp"
+                    android:color="@color/black" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

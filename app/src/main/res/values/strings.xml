@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TickTackToe</string>
+    <string name="grid_element_content_desc">Board element</string>
+</resources>

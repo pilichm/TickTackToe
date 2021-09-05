@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <ImageView
+            android:tag="0"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="1"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="2"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="3"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="4"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="5"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="6"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="7"
+            android:src="@drawable/shape_circle"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+        <ImageView
+            android:tag="8"
+            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/grid_element_padding"
+            android:contentDescription="@string/grid_element_content_desc"
+            android:layout_margin="@dimen/grid_element_margin"
+            android:layout_width="@dimen/grid_element_size"
+            android:layout_height="@dimen/grid_element_size"/>
+
+    </GridLayout>
+
+</LinearLayout>
