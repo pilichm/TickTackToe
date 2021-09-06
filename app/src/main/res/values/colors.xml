@@ -14,4 +14,5 @@
     <color name="board_color">#654321</color>
     <color name="header_text_color">#add8e6</color>
     <color name="winning_positions_color">#FFF000</color>
+    <color name="main_menu_background">#add8e6</color>
 </resources>

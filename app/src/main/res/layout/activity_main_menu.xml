@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/main_menu_background"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:id="@+id/tvMainMenuGameTitle"
+        android:textSize="@dimen/default_text_size"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/main_menu_app_name_margin"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnManiMenuOnePlayer"
+        android:background="@color/board_color"
+        android:layout_margin="@dimen/main_menu_app_button_margin"
+        android:text="@string/button_one_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnManiMenuTwoPlayers"
+        android:text="@string/button_two_player"
+        android:layout_margin="@dimen/main_menu_app_button_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnManiMenuSettings"
+        android:text="@string/button_settings"
+        android:layout_margin="@dimen/main_menu_app_button_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnManiMenuExit"
+        android:text="@string/button_exit"
+        android:layout_margin="@dimen/main_menu_app_button_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

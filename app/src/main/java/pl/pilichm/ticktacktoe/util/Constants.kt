@@ -7,6 +7,7 @@ class Constants {
         const val SECOND_PLAYER_ID = 2
         const val PREFIX_TOP_IMAGE = "top"
         const val PREFIX_BOTTOM_IMAGE = "bottom"
+        const val PROPERTY_NUMBER_OF_PLAYERS = "number_of_players"
 
         val winningLocations = arrayOf(
             arrayOf(0, 1, 2),
