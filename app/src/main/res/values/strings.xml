@@ -5,8 +5,10 @@
     <string name="first_player_move">First player move</string>
     <string name="second_player_move">Second player move</string>
     <string name="field_already_selected">Selected field is not empty!</string>
+    <string name="someone_already_won">Game is finished, please restart!</string>
 
     <string name="first_player_wins">First player wins!!!</string>
     <string name="second_player_wins">Second player wins!!!</string>
     <string name="game_ends_draw">Draw!!!</string>
+    <string name="reset">Reset</string>
 </resources>

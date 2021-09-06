@@ -1,98 +1,243 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llMain"
-    android:layout_width="match_parent"
+<RelativeLayout
+    android:id="@+id/rlMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:background="@color/board_color"
-    android:gravity="center"
-    android:orientation="vertical" >
+    android:layout_width="match_parent">
 
-    <TextView
-        android:id="@+id/tvWhichPlayer"
-        android:gravity="top|center"
-        android:textSize="@dimen/default_text_size"
-        android:textColor="@color/header_text_color"
-        android:textStyle="bold"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMainActivity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <GridLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="3">
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
 
-        <ImageView
-            android:tag="0"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarMainActivity"
+        android:background="@color/board_color"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-        <ImageView
-            android:tag="1"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+        <TextView
+            android:id="@+id/tvWhichPlayer"
+            android:gravity="top|center"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="@color/header_text_color"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:tag="2"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="3">
 
-        <ImageView
-            android:tag="3"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+            <RelativeLayout
+                android:tag="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:tag="4"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+                <ImageView
+                    android:tag="bottom0"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
 
-        <ImageView
-            android:tag="5"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+                <ImageView
+                    android:tag="top0"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
 
-        <ImageView
-            android:tag="6"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
 
-        <ImageView
-            android:tag="7"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+            <RelativeLayout
+                android:tag="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:tag="8"
-            android:padding="@dimen/grid_element_padding"
-            android:contentDescription="@string/grid_element_content_desc"
-            android:layout_margin="@dimen/grid_element_margin"
-            android:layout_width="@dimen/grid_element_size"
-            android:layout_height="@dimen/grid_element_size"/>
+                <ImageView
+                    android:tag="bottom1"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
 
-    </GridLayout>
+                <ImageView
+                    android:tag="top1"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
 
-</LinearLayout>
+            <RelativeLayout
+                android:tag="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom2"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top2"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom3"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top3"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom4"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top4"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom5"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top5"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom6"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top6"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom7"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top7"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:tag="8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tag="bottom8"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+
+                <ImageView
+                    android:tag="top8"
+                    android:layout_margin="@dimen/grid_element_margin"
+                    android:padding="@dimen/grid_element_padding"
+                    android:contentDescription="@string/grid_element_content_desc"
+                    android:layout_width="@dimen/grid_element_size"
+                    android:layout_height="@dimen/grid_element_size"/>
+            </RelativeLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
