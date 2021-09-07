@@ -16,4 +16,21 @@
     <string name="button_two_player">Two Players</string>
     <string name="button_settings">Settings</string>
     <string name="button_exit">Exit</string>
+    <string name="button_reset_settings">Reset settings</string>
+    <string name="settings">Settings</string>
+    <string name="change_difficulty_level">Change difficulty level</string>
+
+    <string name="easy_level_description">Computer will make random moves</string>
+    <string name="medium_level_description">Half of computer moves will be random, rest will be aiming for best possible scenario</string>
+    <string name="hard_level_description">Computer will be using win or draw scenario</string>
+
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="green_circle">Green circle</string>
+    <string name="circle">Circle</string>
+    <string name="change_second_player_sign">Second player sign</string>
+    <string name="red_circle">Red circle</string>
+    <string name="cross">Cross</string>
+    <string name="change_first_player_sign">First player sign</string>
 </resources>

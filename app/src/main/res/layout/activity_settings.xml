@@ -1,0 +1,131 @@
+<RelativeLayout
+    android:id="@+id/rlMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:id="@+id/tvSettingsTitle"
+        android:gravity="center|top"
+        android:layout_gravity="center"
+        android:text="@string/settings"
+        android:textSize="@dimen/default_text_size"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llSettingsMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvSettingsTitle"
+        android:background="@color/grid_element_light"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerDifficulty"
+                android:background="@color/white"
+                android:padding="@dimen/settings_element_padding"
+                android:layout_width="wrap_content"
+                android:entries="@array/difficulty_levels_array"
+                android:prompt="@string/change_difficulty_level"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvSettingsDifficultyDesc"
+                android:background="@color/white"
+                android:padding="@dimen/grid_element_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:background="@color/white"
+                android:text="@string/change_first_player_sign"
+                android:padding="@dimen/grid_element_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton android:id="@+id/first_player_cross"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cross"/>
+
+                <RadioButton android:id="@+id/first_player_red_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/red_circle"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:background="@color/white"
+                android:text="@string/change_second_player_sign"
+                android:padding="@dimen/grid_element_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton android:id="@+id/second_player_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/circle"/>
+
+                <RadioButton android:id="@+id/second_player_green_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/green_circle"/>
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSettingsResetToDefault"
+            android:padding="@dimen/grid_element_padding"
+            android:text="@string/button_reset_settings"
+            android:layout_margin="@dimen/main_menu_app_button_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

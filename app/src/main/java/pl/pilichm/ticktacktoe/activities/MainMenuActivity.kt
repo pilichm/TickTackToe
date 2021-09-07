@@ -25,6 +25,14 @@ class MainMenuActivity : AppCompatActivity() {
             intent.putExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 1)
             startActivity(intent)
         }
+
+        /**
+         * Go to settings.
+         * */
+        btnManiMenuSettings.setOnClickListener {
+            startActivity(Intent(applicationContext, SettingsActivity::class.java))
+        }
+
         /**
          * Exit app.
          * */
