@@ -12,6 +12,16 @@ class Constants {
         const val DIFFICULTY_MEDIUM = "Medium"
         const val DIFFICULTY_HARD = "Hard"
 
+        /**
+         * Const values for storing settings in shared preferences.
+         * */
+        const val SHARED_PREFERENCES_NAME = "tic_tac_settings"
+        const val SP_KEY_DIFFICULTY_LEVEL = "difficulty_level"
+        const val SP_KEY_FIRST_PLAYER_SIGN = "first_player_sign"
+        const val SP_KEY_SECOND_PLAYER_SIGN = "second_player_sign"
+        const val FIRST_SIGN = 0
+        const val SECOND_SIGN = 1
+
         val winningLocations = arrayOf(
             arrayOf(0, 1, 2),
             arrayOf(3, 4, 5),

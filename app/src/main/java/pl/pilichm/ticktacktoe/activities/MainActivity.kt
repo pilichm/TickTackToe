@@ -1,5 +1,6 @@
 package pl.pilichm.ticktacktoe.activities
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private var mCurrentPlayer: Int = Constants.FIRST_PLAYER_ID
     private var mBoardState = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
     private var mSomeoneWon: Boolean = false
+    private var mFirstPlayerSign = Constants.FIRST_SIGN
+    private var mSecondPlayerSign = Constants.FIRST_SIGN
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +28,42 @@ class MainActivity : AppCompatActivity() {
 
         setUpActionBar()
         addListenersToGridElements()
+        getSettingsFromSharedPreferences()
         resetBoard()
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main_activity, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    /**
+     * Reads settings saved in shared preferences.
+     * */
+    private fun getSettingsFromSharedPreferences(){
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        mFirstPlayerSign = sharedPreferences.getInt(Constants.SP_KEY_FIRST_PLAYER_SIGN, 0)
+        mSecondPlayerSign = sharedPreferences.getInt(Constants.SP_KEY_SECOND_PLAYER_SIGN, 0)
+    }
+
+    /**
+     * Returns id of image resource which will be displayed in fields clicked by first player
+     * if true is passed, or second player if false is passed.
+     * */
+    private fun getSignIdForPlayer(isFirstPlayer: Boolean): Int{
+        if (isFirstPlayer){
+            return when (mFirstPlayerSign){
+                Constants.FIRST_SIGN -> R.drawable.shape_cross
+                Constants.SECOND_SIGN -> R.drawable.circle_red
+                else -> R.drawable.shape_cross
+            }
+        } else {
+            return when (mSecondPlayerSign){
+                Constants.FIRST_SIGN -> R.drawable.shape_circle
+                Constants.SECOND_SIGN -> R.drawable.circle_green
+                else -> R.drawable.shape_circle
+            }
+        }
     }
 
     /**
@@ -69,11 +103,11 @@ class MainActivity : AppCompatActivity() {
 
                     if (mCurrentPlayer==Constants.FIRST_PLAYER_ID){
                         tvWhichPlayer.text = resources.getString(R.string.second_player_move)
-                        addImageWithFadeInAnimation(viewTop, R.drawable.shape_cross)
+                        addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(true))
                         mCurrentPlayer = Constants.SECOND_PLAYER_ID
                     } else {
                         tvWhichPlayer.text = resources.getString(R.string.first_player_move)
-                        addImageWithFadeInAnimation(viewTop, R.drawable.shape_circle)
+                        addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(false))
                         mCurrentPlayer = Constants.FIRST_PLAYER_ID
                     }
                     checkResult()
