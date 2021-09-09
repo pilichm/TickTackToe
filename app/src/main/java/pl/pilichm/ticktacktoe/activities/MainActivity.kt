@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import pl.pilichm.ticktacktoe.R
 import pl.pilichm.ticktacktoe.util.Constants
+import pl.pilichm.ticktacktoe.util.Utils
 
 class MainActivity : AppCompatActivity() {
     private var mCurrentPlayer: Int = Constants.FIRST_PLAYER_ID
@@ -21,10 +22,17 @@ class MainActivity : AppCompatActivity() {
     private var mSomeoneWon: Boolean = false
     private var mFirstPlayerSign = Constants.FIRST_SIGN
     private var mSecondPlayerSign = Constants.FIRST_SIGN
+    private var mNumOfPlayers = 2
+    private var mDifficultyLevel = Constants.DIFFICULTY_EASY
+    private var mComputerPlayerMoveCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (intent.hasExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS)){
+            mNumOfPlayers = intent.getIntExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 2)
+        }
 
         setUpActionBar()
         addListenersToGridElements()
@@ -44,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
         mFirstPlayerSign = sharedPreferences.getInt(Constants.SP_KEY_FIRST_PLAYER_SIGN, 0)
         mSecondPlayerSign = sharedPreferences.getInt(Constants.SP_KEY_SECOND_PLAYER_SIGN, 0)
+        mDifficultyLevel = sharedPreferences.getString(Constants.SP_KEY_DIFFICULTY_LEVEL, Constants.DIFFICULTY_EASY)!!
     }
 
     /**
@@ -51,14 +60,14 @@ class MainActivity : AppCompatActivity() {
      * if true is passed, or second player if false is passed.
      * */
     private fun getSignIdForPlayer(isFirstPlayer: Boolean): Int{
-        if (isFirstPlayer){
-            return when (mFirstPlayerSign){
+        return if (isFirstPlayer){
+            when (mFirstPlayerSign){
                 Constants.FIRST_SIGN -> R.drawable.shape_cross
                 Constants.SECOND_SIGN -> R.drawable.circle_red
                 else -> R.drawable.shape_cross
             }
         } else {
-            return when (mSecondPlayerSign){
+            when (mSecondPlayerSign){
                 Constants.FIRST_SIGN -> R.drawable.shape_circle
                 Constants.SECOND_SIGN -> R.drawable.circle_green
                 else -> R.drawable.shape_circle
@@ -105,6 +114,40 @@ class MainActivity : AppCompatActivity() {
                         tvWhichPlayer.text = resources.getString(R.string.second_player_move)
                         addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(true))
                         mCurrentPlayer = Constants.SECOND_PLAYER_ID
+
+                        /**
+                         * In one player mode cpu will make moves for second player.
+                         */
+                        if (mNumOfPlayers==1){
+                            val selectedPosition = when (mDifficultyLevel) {
+                                Constants.DIFFICULTY_EASY -> {
+                                    Utils.makeRandomMove(mBoardState)
+                                }
+                                Constants.DIFFICULTY_MEDIUM -> {
+                                    if (mComputerPlayerMoveCount%2==0){
+                                        Utils.makeRandomMove(mBoardState)
+                                    } else {
+                                        Utils.makeBestPossibleMove(mBoardState)
+                                    }
+                                }
+                                Constants.DIFFICULTY_HARD -> {
+                                    Utils.makeBestPossibleMove(mBoardState)
+                                }
+                                else -> {
+                                    Utils.makeRandomMove(mBoardState)
+                                }
+                            }
+
+                            val selectedView = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$selectedPosition")
+
+                            mBoardState[selectedPosition] = Constants.SECOND_PLAYER_ID
+                            tvWhichPlayer.text = resources.getString(R.string.first_player_move)
+                            addImageWithFadeInAnimation(selectedView, getSignIdForPlayer(false))
+                            mCurrentPlayer = Constants.FIRST_PLAYER_ID
+                            mComputerPlayerMoveCount++
+                            checkResult()
+                        }
+
                     } else {
                         tvWhichPlayer.text = resources.getString(R.string.first_player_move)
                         addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(false))

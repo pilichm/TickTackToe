@@ -27,6 +27,15 @@ class MainMenuActivity : AppCompatActivity() {
         }
 
         /**
+         * Start game for two players.
+         * */
+        btnManiMenuTwoPlayers.setOnClickListener {
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            intent.putExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 2)
+            startActivity(intent)
+        }
+
+        /**
          * Go to settings.
          * */
         btnManiMenuSettings.setOnClickListener {
