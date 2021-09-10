@@ -53,5 +53,17 @@ class Utils {
              * */
             return makeRandomMove(boardState)
         }
+
+        /**
+         * Checks if board contains at least one empty field.
+         * */
+        fun checkIfBoardContainsEmptyField(boardState: IntArray): Boolean {
+            for (element in boardState){
+                if (element==Constants.NO_PLAYER_ID){
+                    return true
+                }
+            }
+            return false
+        }
     }
 }

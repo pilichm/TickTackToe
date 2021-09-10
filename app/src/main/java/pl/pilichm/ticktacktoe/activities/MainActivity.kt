@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                     val viewTop = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$i")
 
                     if (mCurrentPlayer==Constants.FIRST_PLAYER_ID){
+                        checkResult()
                         tvWhichPlayer.text = resources.getString(R.string.second_player_move)
                         addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(true))
                         mCurrentPlayer = Constants.SECOND_PLAYER_ID
@@ -118,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                         /**
                          * In one player mode cpu will make moves for second player.
                          */
-                        if (mNumOfPlayers==1){
+                        if (mNumOfPlayers==1&&Utils.checkIfBoardContainsEmptyField(mBoardState)){
                             val selectedPosition = when (mDifficultyLevel) {
                                 Constants.DIFFICULTY_EASY -> {
                                     Utils.makeRandomMove(mBoardState)
@@ -213,15 +214,8 @@ class MainActivity : AppCompatActivity() {
          * Check if board contains at least one empty field.
          * If not, current game has ended in draw.
          * */
-        var emptyElementFound = false
-        for (element in mBoardState){
-            if (element==Constants.NO_PLAYER_ID){
-                emptyElementFound = true
-                break
-            }
-        }
 
-        if (!emptyElementFound){
+        if (!Utils.checkIfBoardContainsEmptyField(mBoardState)){
             tvWhichPlayer.text = resources.getString(R.string.game_ends_draw)
         }
     }
