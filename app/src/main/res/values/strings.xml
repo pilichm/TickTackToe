@@ -9,6 +9,7 @@
 
     <string name="first_player_wins">First player wins!!!</string>
     <string name="second_player_wins">Second player wins!!!</string>
+    <string name="cpu_player_wins">Computer player wins!!!</string>
     <string name="game_ends_draw">Draw!!!</string>
     <string name="reset">Reset</string>
 

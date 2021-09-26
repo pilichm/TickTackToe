@@ -8,4 +8,5 @@
     <dimen name="main_menu_app_name_margin">25dp</dimen>
     <dimen name="main_menu_app_button_margin">10dp</dimen>
     <dimen name="settings_image_dim">150dp</dimen>
+    <dimen name="fab_margin_top">32dp</dimen>
 </resources>

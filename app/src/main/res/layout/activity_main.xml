@@ -237,6 +237,13 @@
 
         </GridLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabVolumeUp"
+            android:layout_marginTop="@dimen/fab_margin_top"
+            android:src="@drawable/ic_baseline_volume_up_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </RelativeLayout>

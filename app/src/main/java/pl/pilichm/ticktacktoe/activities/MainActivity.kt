@@ -1,6 +1,7 @@
 package pl.pilichm.ticktacktoe.activities
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private var mNumOfPlayers = 2
     private var mDifficultyLevel = Constants.DIFFICULTY_EASY
     private var mComputerPlayerMoveCount = 0
+    private var mVolumeOn: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -169,6 +171,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        /**
+         * Adds listener to floating action button for enabling and disabling game sounds.
+         * */
+        fabVolumeUp.setOnClickListener {
+            if (mVolumeOn){
+                fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_off_24)
+            } else {
+                fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_up_24)
+            }
+            mVolumeOn = !mVolumeOn
+        }
     }
 
     /**
@@ -200,10 +214,18 @@ class MainActivity : AppCompatActivity() {
                 when (mBoardState[positions[0]]){
                     Constants.FIRST_PLAYER_ID -> {
                         tvWhichPlayer.text = resources.getString(R.string.first_player_wins)
+                        playSoundIfEnabled(R.raw.game_result_victory)
                         return
                     }
                     Constants.SECOND_PLAYER_ID -> {
-                        tvWhichPlayer.text = resources.getString(R.string.second_player_wins)
+                        if (mNumOfPlayers==2){
+                            tvWhichPlayer.text = resources.getString(R.string.second_player_wins)
+                            playSoundIfEnabled(R.raw.game_result_victory)
+                        } else {
+                            tvWhichPlayer.text = resources.getString(R.string.cpu_player_wins)
+                            playSoundIfEnabled(R.raw.game_result_lose)
+                        }
+
                         return
                     }
                 }
@@ -217,6 +239,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!Utils.checkIfBoardContainsEmptyField(mBoardState)){
             tvWhichPlayer.text = resources.getString(R.string.game_ends_draw)
+            playSoundIfEnabled(R.raw.game_result_draw)
         }
     }
 
@@ -259,6 +282,16 @@ class MainActivity : AppCompatActivity() {
             } else {
                 viewBottom.setBackgroundColor(gridDarkColor)
             }
+        }
+    }
+
+    /**
+     * Plays passed audio resource if game sounds are enabled.
+     * */
+    private fun playSoundIfEnabled(soundId: Int){
+        if (mVolumeOn){
+            val mMediaPlayer = MediaPlayer.create(applicationContext, soundId)
+            mMediaPlayer?.start()
         }
     }
 }
