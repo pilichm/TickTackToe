@@ -1,17 +1,19 @@
 package pl.pilichm.ticktacktoe.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main_menu.*
-import pl.pilichm.ticktacktoe.R
+import androidx.appcompat.app.AppCompatActivity
+import pl.pilichm.ticktacktoe.databinding.ActivityMainMenuBinding
 import pl.pilichm.ticktacktoe.util.Constants
 import kotlin.system.exitProcess
 
 class MainMenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_menu)
+        binding = ActivityMainMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setUpListeners()
     }
@@ -20,7 +22,7 @@ class MainMenuActivity : AppCompatActivity() {
         /**
          * Start game for one player.
          * */
-        btnManiMenuOnePlayer.setOnClickListener {
+        binding.btnManiMenuOnePlayer.setOnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.putExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 1)
             startActivity(intent)
@@ -29,7 +31,7 @@ class MainMenuActivity : AppCompatActivity() {
         /**
          * Start game for two players.
          * */
-        btnManiMenuTwoPlayers.setOnClickListener {
+        binding.btnManiMenuTwoPlayers.setOnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.putExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 2)
             startActivity(intent)
@@ -38,14 +40,14 @@ class MainMenuActivity : AppCompatActivity() {
         /**
          * Go to settings.
          * */
-        btnManiMenuSettings.setOnClickListener {
+        binding.btnManiMenuSettings.setOnClickListener {
             startActivity(Intent(applicationContext, SettingsActivity::class.java))
         }
 
         /**
          * Exit app.
          * */
-        btnManiMenuExit.setOnClickListener {
+        binding.btnManiMenuExit.setOnClickListener {
             finish();
             exitProcess(0);
         }

@@ -5,18 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import kotlinx.android.synthetic.main.activity_settings.*
 import pl.pilichm.ticktacktoe.R
+import pl.pilichm.ticktacktoe.databinding.ActivitySettingsBinding
 import pl.pilichm.ticktacktoe.util.Constants
 
 class SettingsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingsBinding
     private var mDifficultyLevel = Constants.DIFFICULTY_EASY
     private var mFirstPlayerSign = Constants.FIRST_SIGN
     private var mSecondPlayerSign = Constants.FIRST_SIGN
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         getSettingsFromSharedPreferences()
         setUpDifficultySpinner(getSpinnerPositionForDifficulty(mDifficultyLevel))
@@ -30,7 +32,7 @@ class SettingsActivity : AppCompatActivity() {
      * Resets setting values to default in shared preferences and ui elements.
      * */
     private fun setUpResetButton(){
-        btnSettingsResetToDefault.setOnClickListener {
+        binding.btnSettingsResetToDefault.setOnClickListener {
             saveSetting(Constants.SP_KEY_DIFFICULTY_LEVEL, Constants.DIFFICULTY_EASY)
             saveSetting(Constants.SP_KEY_FIRST_PLAYER_SIGN, Constants.FIRST_SIGN)
             saveSetting(Constants.SP_KEY_SECOND_PLAYER_SIGN, Constants.FIRST_SIGN)
@@ -49,23 +51,23 @@ class SettingsActivity : AppCompatActivity() {
     private fun setUpInitialRadioButtonValues(){
         when (mFirstPlayerSign){
             Constants.FIRST_SIGN -> {
-                firstPlayerCross.isChecked = true
-                firstPlayerRedCircle.isChecked = false
+                binding.firstPlayerCross.isChecked = true
+                binding.firstPlayerRedCircle.isChecked = false
             }
             Constants.SECOND_SIGN -> {
-                firstPlayerCross.isChecked = false
-                firstPlayerRedCircle.isChecked = true
+                binding.firstPlayerCross.isChecked = false
+                binding.firstPlayerRedCircle.isChecked = true
             }
         }
 
         when (mSecondPlayerSign){
             Constants.FIRST_SIGN -> {
-                secondPlayerCircle.isChecked = true
-                secondPlayerGreenCircle.isChecked = false
+                binding.secondPlayerCircle.isChecked = true
+                binding.secondPlayerGreenCircle.isChecked = false
             }
             Constants.SECOND_SIGN -> {
-                secondPlayerCircle.isChecked = false
-                secondPlayerGreenCircle.isChecked = true
+                binding.secondPlayerCircle.isChecked = false
+                binding.secondPlayerGreenCircle.isChecked = true
             }
         }
     }
@@ -75,19 +77,19 @@ class SettingsActivity : AppCompatActivity() {
      * Changed values are saved in shared preferences.
      * */
     private fun setUpListenersForRadioButtons(){
-        firstPlayerCross.setOnClickListener {
+        binding.firstPlayerCross.setOnClickListener {
             saveSetting(Constants.SP_KEY_FIRST_PLAYER_SIGN, Constants.FIRST_SIGN)
         }
 
-        firstPlayerRedCircle.setOnClickListener {
+        binding.firstPlayerRedCircle.setOnClickListener {
             saveSetting(Constants.SP_KEY_FIRST_PLAYER_SIGN, Constants.SECOND_SIGN)
         }
 
-        secondPlayerCircle.setOnClickListener {
+        binding.secondPlayerCircle.setOnClickListener {
             saveSetting(Constants.SP_KEY_SECOND_PLAYER_SIGN, Constants.FIRST_SIGN)
         }
 
-        secondPlayerGreenCircle.setOnClickListener {
+        binding.secondPlayerGreenCircle.setOnClickListener {
             saveSetting(Constants.SP_KEY_SECOND_PLAYER_SIGN, Constants.SECOND_SIGN)
         }
     }
@@ -108,8 +110,8 @@ class SettingsActivity : AppCompatActivity() {
      * matches selected value.
      * */
     private fun setUpDifficultySpinner(selectedPosition: Int){
-        spinnerDifficulty.setSelection(selectedPosition)
-        spinnerDifficulty.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        binding.spinnerDifficulty.setSelection(selectedPosition)
+        binding.spinnerDifficulty.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -136,15 +138,15 @@ class SettingsActivity : AppCompatActivity() {
      * Refreshed description text so that it matches difficulty level selected in spinner.
      * */
     private fun setDifficultyLevelDescription(){
-        when (spinnerDifficulty.selectedItem.toString()){
+        when (binding.spinnerDifficulty.selectedItem.toString()){
             Constants.DIFFICULTY_EASY -> {
-                tvSettingsDifficultyDesc.text = resources.getString(R.string.easy_level_description)
+                binding.tvSettingsDifficultyDesc.text = resources.getString(R.string.easy_level_description)
             }
             Constants.DIFFICULTY_MEDIUM -> {
-                tvSettingsDifficultyDesc.text = resources.getString(R.string.medium_level_description)
+                binding.tvSettingsDifficultyDesc.text = resources.getString(R.string.medium_level_description)
             }
             Constants.DIFFICULTY_HARD -> {
-                tvSettingsDifficultyDesc.text = resources.getString(R.string.hard_level_description)
+                binding.tvSettingsDifficultyDesc.text = resources.getString(R.string.hard_level_description)
             }
         }
     }

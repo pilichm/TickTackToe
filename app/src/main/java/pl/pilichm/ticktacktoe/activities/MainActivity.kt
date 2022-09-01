@@ -12,12 +12,13 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_main.*
 import pl.pilichm.ticktacktoe.R
+import pl.pilichm.ticktacktoe.databinding.ActivityMainBinding
 import pl.pilichm.ticktacktoe.util.Constants
 import pl.pilichm.ticktacktoe.util.Utils
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private var mCurrentPlayer: Int = Constants.FIRST_PLAYER_ID
     private var mBoardState = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
     private var mSomeoneWon: Boolean = false
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (intent.hasExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS)){
             mNumOfPlayers = intent.getIntExtra(Constants.PROPERTY_NUMBER_OF_PLAYERS, 2)
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
      * Sets up custom action bar with no app title.
      * */
     private fun setUpActionBar(){
-        setSupportActionBar(toolbarMainActivity)
+        setSupportActionBar(binding.toolbarMainActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
@@ -106,15 +108,15 @@ class MainActivity : AppCompatActivity() {
      * */
     private fun addListenersToGridElements(){
         for (i in 0..8){
-            val view = llMain.findViewWithTag<RelativeLayout>(i.toString())
+            val view = binding.llMain.findViewWithTag<RelativeLayout>(i.toString())
             view.setOnClickListener {
                 if (mBoardState[i]==0&&!mSomeoneWon){
                     mBoardState[i] = mCurrentPlayer
-                    val viewTop = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$i")
+                    val viewTop = binding.llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$i")
 
                     if (mCurrentPlayer==Constants.FIRST_PLAYER_ID){
                         checkResult()
-                        tvWhichPlayer.text = resources.getString(R.string.second_player_move)
+                        binding.tvWhichPlayer.text = resources.getString(R.string.second_player_move)
                         addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(true))
                         mCurrentPlayer = Constants.SECOND_PLAYER_ID
 
@@ -141,10 +143,10 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
 
-                            val selectedView = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$selectedPosition")
+                            val selectedView = binding.llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$selectedPosition")
 
                             mBoardState[selectedPosition] = Constants.SECOND_PLAYER_ID
-                            tvWhichPlayer.text = resources.getString(R.string.first_player_move)
+                            binding.tvWhichPlayer.text = resources.getString(R.string.first_player_move)
                             addImageWithFadeInAnimation(selectedView, getSignIdForPlayer(false))
                             mCurrentPlayer = Constants.FIRST_PLAYER_ID
                             mComputerPlayerMoveCount++
@@ -152,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                     } else {
-                        tvWhichPlayer.text = resources.getString(R.string.first_player_move)
+                        binding.tvWhichPlayer.text = resources.getString(R.string.first_player_move)
                         addImageWithFadeInAnimation(viewTop, getSignIdForPlayer(false))
                         mCurrentPlayer = Constants.FIRST_PLAYER_ID
                     }
@@ -175,11 +177,11 @@ class MainActivity : AppCompatActivity() {
         /**
          * Adds listener to floating action button for enabling and disabling game sounds.
          * */
-        fabVolumeUp.setOnClickListener {
+        binding.fabVolumeUp.setOnClickListener {
             if (mVolumeOn){
-                fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_off_24)
+                binding.fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_off_24)
             } else {
-                fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_up_24)
+                binding.fabVolumeUp.setImageResource(R.drawable.ic_baseline_volume_up_24)
             }
             mVolumeOn = !mVolumeOn
         }
@@ -213,16 +215,16 @@ class MainActivity : AppCompatActivity() {
                 mSomeoneWon = true
                 when (mBoardState[positions[0]]){
                     Constants.FIRST_PLAYER_ID -> {
-                        tvWhichPlayer.text = resources.getString(R.string.first_player_wins)
+                        binding.tvWhichPlayer.text = resources.getString(R.string.first_player_wins)
                         playSoundIfEnabled(R.raw.game_result_victory)
                         return
                     }
                     Constants.SECOND_PLAYER_ID -> {
                         if (mNumOfPlayers==2){
-                            tvWhichPlayer.text = resources.getString(R.string.second_player_wins)
+                            binding.tvWhichPlayer.text = resources.getString(R.string.second_player_wins)
                             playSoundIfEnabled(R.raw.game_result_victory)
                         } else {
-                            tvWhichPlayer.text = resources.getString(R.string.cpu_player_wins)
+                            binding.tvWhichPlayer.text = resources.getString(R.string.cpu_player_wins)
                             playSoundIfEnabled(R.raw.game_result_lose)
                         }
 
@@ -238,7 +240,7 @@ class MainActivity : AppCompatActivity() {
          * */
 
         if (!Utils.checkIfBoardContainsEmptyField(mBoardState)){
-            tvWhichPlayer.text = resources.getString(R.string.game_ends_draw)
+            binding.tvWhichPlayer.text = resources.getString(R.string.game_ends_draw)
             playSoundIfEnabled(R.raw.game_result_draw)
         }
     }
@@ -250,7 +252,7 @@ class MainActivity : AppCompatActivity() {
         val winningPosColor = ContextCompat.getColor(this, R.color.winning_positions_color)
 
         for (position in positions){
-            val viewBottom = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_BOTTOM_IMAGE}$position")
+            val viewBottom = binding.llMain.findViewWithTag<ImageView>("${Constants.PREFIX_BOTTOM_IMAGE}$position")
             viewBottom.setBackgroundColor(winningPosColor)
         }
     }
@@ -266,13 +268,13 @@ class MainActivity : AppCompatActivity() {
         val gridLightColor = ContextCompat.getColor(this, R.color.grid_element_light)
         val gridDarkColor = ContextCompat.getColor(this, R.color.grid_element_dark)
         mCurrentPlayer = Constants.FIRST_PLAYER_ID
-        tvWhichPlayer.text = resources.getString(R.string.first_player_move)
+        binding.tvWhichPlayer.text = resources.getString(R.string.first_player_move)
         mSomeoneWon = false
 
         for (i in 0..8){
             mBoardState[i] = Constants.NO_PLAYER_ID
-            val viewBottom = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_BOTTOM_IMAGE}$i")
-            val viewTop = llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$i")
+            val viewBottom = binding.llMain.findViewWithTag<ImageView>("${Constants.PREFIX_BOTTOM_IMAGE}$i")
+            val viewTop = binding.llMain.findViewWithTag<ImageView>("${Constants.PREFIX_TOP_IMAGE}$i")
 
             viewTop.setImageResource(0)
             viewBottom.setImageResource(0)
